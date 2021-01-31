@@ -13,6 +13,9 @@
     <Filter Include="FreeGlut\Library\Release">
       <UniqueIdentifier>{d69de044-ba9f-46ed-8a8a-deea2f5f890c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{459c6ce1-619f-486e-9138-7d225f5c7ec5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -33,13 +36,19 @@
     <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\glut.h">
       <Filter>FreeGlut\Library</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>FreeGlut</Filter>
-    </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Rendering</Filter>
     </ClInclude>
     <ClInclude Include="Const.h" />
+    <ClInclude Include="Window.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Voxler.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Poxel.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Poxel.cpp" />

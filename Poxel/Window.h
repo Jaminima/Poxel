@@ -2,14 +2,13 @@
 #include "GL/glut.h"
 #include "GL/freeglut.h"
 
-#include <iostream>
 #include "Color.h"
 #include "Const.h"
+#include "Voxler.h"
 
-namespace Window
-{
+
 	bool BufferSwitch = false;
-	Color* rgbBuffer = new Color[2 * px * py];
+	Color* rgbBuffer = static_cast<Color*>(malloc(px * py * 2 * sizeof(Color)));
 
 	void drawFrame() {
 		glDrawPixels(px, py, GL_RGBA, GL_UNSIGNED_INT, &rgbBuffer[!BufferSwitch * px * py]);
@@ -18,6 +17,12 @@ namespace Window
 
 	void triggerReDraw()
 	{
+		array_view<Color, 3> rgbView(2, py, px, rgbBuffer);
+
+		processTick(rgbView, BufferSwitch);
+
+		rgbView.synchronize();
+
 		glutPostRedisplay();
 
 		BufferSwitch = !BufferSwitch;
@@ -37,6 +42,3 @@ namespace Window
 
 		glutMainLoop();
 	}
-
-};
-
