@@ -1,6 +1,6 @@
-#include <iostream>
+#include "Window.h"
 
-int main()
+int main(int argc, char** argv)
 {
-    std::cout << "Hello World!\n";
+    Window::Start(argc,argv);
 }

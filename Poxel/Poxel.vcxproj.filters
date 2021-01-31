@@ -1,25 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="FreeGlut">
+      <UniqueIdentifier>{809ab20d-2d0a-4f7e-a5df-3c29ae252e1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="FreeGlut\Library">
+      <UniqueIdentifier>{80e4d227-5f64-40ec-9043-9512b62a357f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{ae90a798-768f-420d-a0ee-9656745d4990}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Poxel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Filter Include="FreeGlut\Library\Release">
+      <UniqueIdentifier>{d69de044-ba9f-46ed-8a8a-deea2f5f890c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="..\packages\freeglut.redist.2.8.1.15\build\native\bin\v110\x64\Release\dynamic\freeglut.dll">
+      <Filter>FreeGlut\Library\Release</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut.h">
+      <Filter>FreeGlut\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut_ext.h">
+      <Filter>FreeGlut\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut_std.h">
+      <Filter>FreeGlut\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\glut.h">
+      <Filter>FreeGlut\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>FreeGlut</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Const.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Poxel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\dynamic\freeglut.lib">
+      <Filter>FreeGlut\Library\Release</Filter>
+    </Library>
+    <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\ltcg\freeglut.lib">
+      <Filter>FreeGlut\Library\Release</Filter>
+    </Library>
+    <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\static\freeglut.lib">
+      <Filter>FreeGlut\Library\Release</Filter>
+    </Library>
   </ItemGroup>
 </Project>

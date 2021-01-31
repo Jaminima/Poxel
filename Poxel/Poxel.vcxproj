@@ -142,7 +142,24 @@
     <ClCompile Include="Poxel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="..\packages\freeglut.redist.2.8.1.15\build\native\bin\v110\x64\Release\dynamic\freeglut.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut.h" />
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut_ext.h" />
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut_std.h" />
+    <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\glut.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Const.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\dynamic\freeglut.lib" />
+    <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\ltcg\freeglut.lib" />
+    <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\static\freeglut.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
