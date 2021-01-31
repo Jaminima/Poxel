@@ -29,6 +29,7 @@ int main(int argc, char** argv)
 #ifndef _DEBUG
 	pick_accelerator();
 #endif
-    poxels[py / 2, px / 2].color.colors.r = UINT_MAX;
+
+	ensureDefaults();
     Start(argc,argv);
 }
