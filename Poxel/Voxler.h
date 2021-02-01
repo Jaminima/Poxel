@@ -12,8 +12,18 @@ using namespace Concurrency;
 			poxels[i].setDefault();
 	}
 
+	void doBrushPlace(unsigned int x, unsigned int y) {
+		for (unsigned int _x = x - brushSize, _y = y - brushSize; _y < y + brushSize;) {
+			poxels[_x + ((py - _y) * px)].enabled = true;
+
+			_x++;
+			if (_x == x + brushSize) { _x = x - brushSize; _y++; }
+		}
+	}
+
 	void processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
 		array_view<Poxel, 2> poxel(py, px, poxels);
+		Color _bgColor = bgColor;
 
 		parallel_for_each(
 			poxel.extent,
@@ -21,7 +31,7 @@ using namespace Concurrency;
 				if (poxel[idx].enabled) {
 					poxel[idx].doStep(poxel, rgbView, idx, bufferSwitch);
 				}
-				else rgbView[bufferSwitch][idx] = Color();
+				else rgbView[bufferSwitch][idx] = _bgColor;
 			}
 		);
 

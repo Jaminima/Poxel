@@ -32,9 +32,5 @@ int main(int argc, char** argv)
 
 	ensureDefaults();
 
-	poxels[250 + (py * 250)].enabled = true;
-	poxels[200 + (py * 250)].enabled = true;
-	poxels[200 + (py * 250)].color.colors.g = 0;
-
     Start(argc,argv);
 }
