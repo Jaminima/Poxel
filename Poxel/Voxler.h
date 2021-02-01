@@ -12,9 +12,14 @@ void ensureDefaults() {
 		poxels[i].setDefault();
 }
 
-void doBrushPlace(unsigned int x, unsigned int y) {
+void doBrushPlace(unsigned int x, unsigned int y, Poxel pox) {
 	for (unsigned int _x = x - brushSize, _y = y - brushSize; _y < y + brushSize;) {
-		poxels[_x + ((py - _y) * px)].enabled = true;
+
+		if (_x >= 0 && _x < px && _y >= 0 && _y < py) {
+			Poxel p(pox);
+			p.enabled = true;
+			poxels[_x + ((py - _y) * px)] = p;
+		}
 
 		_x++;
 		if (_x == x + brushSize) { _x = x - brushSize; _y++; }
