@@ -46,11 +46,11 @@
     <ClInclude Include="Poxel.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Inputs.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="FrameCounter.h">
       <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Inputs.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

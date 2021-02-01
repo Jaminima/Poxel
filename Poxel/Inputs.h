@@ -1,6 +1,7 @@
 #pragma once
 #include "GL/glut.h"
 #include "Voxler.h"
+#include "Window.h"
 
 bool leftDown, rightDown;
 
@@ -31,5 +32,14 @@ void mouseDepressed(int button, int state, int x, int y) {
 	else {
 		if (button == GLUT_LEFT_BUTTON) leftDown = false;
 		if (button == GLUT_RIGHT_BUTTON) rightDown = false;
+	}
+}
+
+
+void keyboardPressed(unsigned char key, int x, int y) {
+	switch (key) {
+	case 'q':
+		exit(0);
+		break;
 	}
 }

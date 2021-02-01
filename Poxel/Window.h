@@ -15,6 +15,19 @@ array_view<Color, 3> rgbView(2, py, px, rgbBuffer);
 completion_future pendingFrameCopy;
 completion_future pendingPoxelCopy;
 
+void ensureClear() {
+	array_view<Color, 3> _rgbView(rgbView);
+
+	parallel_for_each(
+		_rgbView.extent,
+		[=](index<3> idx) restrict(amp) {
+			_rgbView[idx] = Color();
+		}
+	);
+
+	_rgbView.synchronize();
+}
+
 void drawFrame() {
 	glDrawPixels(px, py, GL_RGBA, GL_UNSIGNED_INT, &rgbBuffer[!BufferSwitch * px * py]);
 	glutSwapBuffers();
@@ -48,7 +61,7 @@ void Start(int argc, char** argv) {
 
 	glutMouseFunc(mouseDepressed);
 	glutMotionFunc(mouseMovingDepressed);
-	//glutKeyboardFunc(KeyboardDepressed);
+	glutKeyboardFunc(keyboardPressed);
 
 	glutMainLoop();
 }

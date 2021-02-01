@@ -31,6 +31,7 @@ int main(int argc, char** argv)
 #endif
 
 	ensureDefaults();
+	ensureClear();
 
 	Start(argc, argv);
 }
