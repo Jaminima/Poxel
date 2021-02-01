@@ -154,6 +154,7 @@
     <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\glut.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Const.h" />
+    <ClInclude Include="FrameCounter.h" />
     <ClInclude Include="Inputs.h" />
     <ClInclude Include="Poxel.h" />
     <ClInclude Include="Voxler.h" />
