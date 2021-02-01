@@ -10,7 +10,7 @@ public:
 	Color color;
 	bool enabled = false;
 
-	Poxel() restrict(amp, cpu) { enabled = true; }
+	Poxel() restrict(amp,cpu) {}
 
 	void setDefault() {
 		color = Color(UINT_MAX, UINT_MAX, UINT_MAX);
