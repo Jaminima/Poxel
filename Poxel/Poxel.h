@@ -1,4 +1,5 @@
 #pragma once
+#include "Const.h"
 #include "Color.h"
 #include <amp.h>
 
@@ -36,8 +37,8 @@ public:
 		if (idx[0] > 0) { //Prevent falling out of scene
 
 			if (CheckAndSet(poxel, idx[0] - 1, idx[1])) {}
-			else if (CheckAndSet(poxel, idx[0] - 1, idx[1] - 1)) {}
-			else if (CheckAndSet(poxel, idx[0] - 1, idx[1] + 1)) {}
+			else if (!(idx[1]==0 && hardSides) && CheckAndSet(poxel, idx[0] - 1, idx[1] - 1)) {}
+			else if (!(idx[1]==px-1 && hardSides) && CheckAndSet(poxel, idx[0] - 1, idx[1] + 1)) {}
 		}
 	}
 };
