@@ -13,6 +13,11 @@ public:
 
 	Poxel() restrict(amp, cpu) {}
 
+	Poxel(Color color) {
+		this->color = color;
+		enabled = true;
+	}
+
 	void setDefault() {
 		color = Color(UINT_MAX, UINT_MAX, UINT_MAX);
 		enabled = false;
