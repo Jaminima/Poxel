@@ -5,6 +5,7 @@
 #include "Color.h"
 #include "Const.h"
 #include "Voxler.h"
+#include "Inputs.h"
 
 	bool BufferSwitch = false;
 	Color* rgbBuffer = static_cast<Color*>(malloc(px * py * 2 * sizeof(Color)));
@@ -36,7 +37,7 @@
 		glutDisplayFunc(drawFrame);
 		glutIdleFunc(triggerReDraw);
 
-		//glutPassiveMotionFunc(MouseMove);
+		glutMotionFunc(mouseMovingDepressed);
 		//glutKeyboardFunc(KeyboardDepressed);
 
 		glutMainLoop();

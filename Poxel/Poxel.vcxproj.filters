@@ -19,9 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\packages\freeglut.redist.2.8.1.15\build\native\bin\v110\x64\Release\dynamic\freeglut.dll">
-      <Filter>FreeGlut\Library\Release</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\packages\freeglut.2.8.1.15\build\native\include\GL\freeglut.h">
@@ -49,6 +46,9 @@
     <ClInclude Include="Poxel.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Inputs.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Poxel.cpp" />
@@ -63,5 +63,8 @@
     <Library Include="..\packages\freeglut.2.8.1.15\build\native\lib\v110\x64\Release\static\freeglut.lib">
       <Filter>FreeGlut\Library\Release</Filter>
     </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\packages\freeglut.redist.2.8.1.15\build\native\bin\v110\x64\Release\dynamic\freeglut.dll" />
   </ItemGroup>
 </Project>
