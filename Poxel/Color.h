@@ -14,7 +14,7 @@ public:
 		unsigned int rgba[4];
 	};
 
-	Color() restrict(amp,cpu) {
+	Color() restrict(amp, cpu) {
 		colors.r = 0;
 		colors.g = 0;
 		colors.b = 0;
@@ -28,4 +28,3 @@ public:
 		colors.a = UINT_MAX;
 	}
 };
-

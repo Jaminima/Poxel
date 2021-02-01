@@ -8,10 +8,8 @@ void mouseMovingDepressed(int x, int y) {
 
 void mouseDepressed(int button, int state, int x, int y) {
 	if (state == GLUT_DOWN) {
-
 		if (button == GLUT_LEFT_BUTTON) {
 			doBrushPlace(x, y);
 		}
-
 	}
 }

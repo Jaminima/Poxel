@@ -11,7 +11,7 @@ public:
 	Color color;
 	bool enabled = false;
 
-	Poxel() restrict(amp,cpu) {}
+	Poxel() restrict(amp, cpu) {}
 
 	void setDefault() {
 		color = Color(UINT_MAX, UINT_MAX, UINT_MAX);
@@ -31,15 +31,13 @@ public:
 		return false;
 	}
 
-	void doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict (amp) {
+	void doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict(amp) {
 		rgbView[bufferSwitch][idx] = poxel[idx].color;
 
 		if (idx[0] > 0) { //Prevent falling out of scene
-
 			if (CheckAndSet(poxel, idx[0] - 1, idx[1])) {}
-			else if (!(idx[1]==0 && hardSides) && CheckAndSet(poxel, idx[0] - 1, idx[1] - 1)) {}
-			else if (!(idx[1]==px-1 && hardSides) && CheckAndSet(poxel, idx[0] - 1, idx[1] + 1)) {}
+			else if (!(idx[1] == 0 && hardSides) && CheckAndSet(poxel, idx[0] - 1, idx[1] - 1)) {}
+			else if (!(idx[1] == px - 1 && hardSides) && CheckAndSet(poxel, idx[0] - 1, idx[1] + 1)) {}
 		}
 	}
 };
-

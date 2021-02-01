@@ -32,5 +32,5 @@ int main(int argc, char** argv)
 
 	ensureDefaults();
 
-    Start(argc,argv);
+	Start(argc, argv);
 }
