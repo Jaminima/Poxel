@@ -20,13 +20,17 @@ public:
 	void doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict (amp) {
 		rgbView[bufferSwitch][idx] = poxel[idx].color;
 
-		if (!poxel[idx[0]-1][idx[1]].enabled) {
-			Poxel *p = &poxel[idx[0] - 1][idx[1]];
+		if (idx[0] > 0) { //Prevent falling out of scene
 
-			p->enabled = true;
-			p->color = color;
+			if (!poxel[idx[0] - 1][idx[1]].enabled) {
+				Poxel* p = &poxel[idx[0] - 1][idx[1]];
 
-			enabled = false;
+				p->enabled = true;
+				p->color = color;
+
+				enabled = false;
+			}
+
 		}
 	}
 };
