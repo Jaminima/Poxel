@@ -21,9 +21,9 @@ void doBrushPlace(unsigned int x, unsigned int y) {
 	}
 }
 
-void processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
-	array_view<Poxel, 2> poxel(py, px, poxels);
+completion_future processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
 	Color _bgColor = bgColor;
+	array_view<Poxel, 2> poxel(py, px, poxels);
 
 	parallel_for_each(
 		poxel.extent,
@@ -35,5 +35,5 @@ void processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
 		}
 	);
 
-	poxel.synchronize();
+	return poxel.synchronize_async();
 }

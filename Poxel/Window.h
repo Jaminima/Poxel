@@ -10,6 +10,10 @@
 
 bool BufferSwitch = false;
 Color* rgbBuffer = static_cast<Color*>(malloc(px * py * 2 * sizeof(Color)));
+array_view<Color, 3> rgbView(2, py, px, rgbBuffer);
+
+completion_future pendingFrameCopy;
+completion_future pendingPoxelCopy;
 
 void drawFrame() {
 	glDrawPixels(px, py, GL_RGBA, GL_UNSIGNED_INT, &rgbBuffer[!BufferSwitch * px * py]);
@@ -18,11 +22,9 @@ void drawFrame() {
 
 void triggerReDraw()
 {
-	array_view<Color, 3> rgbView(2, py, px, rgbBuffer);
+	pendingFrameCopy = rgbView.synchronize_async();
 
-	processTick(rgbView, BufferSwitch);
-
-	rgbView.synchronize();
+	pendingPoxelCopy = processTick(rgbView, BufferSwitch);
 
 	framesInSec++;
 	checkFrameTime();
@@ -30,6 +32,9 @@ void triggerReDraw()
 	glutPostRedisplay();
 
 	BufferSwitch = !BufferSwitch;
+
+	pendingPoxelCopy.wait();
+	pendingFrameCopy.wait();
 }
 
 void Start(int argc, char** argv) {
