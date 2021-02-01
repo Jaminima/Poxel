@@ -37,6 +37,7 @@
 		glutDisplayFunc(drawFrame);
 		glutIdleFunc(triggerReDraw);
 
+		glutMouseFunc(mouseDepressed);
 		glutMotionFunc(mouseMovingDepressed);
 		//glutKeyboardFunc(KeyboardDepressed);
 
