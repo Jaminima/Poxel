@@ -17,7 +17,7 @@ public:
 		enabled = false;
 	}
 
-	bool CheckAndSet(array_view<Poxel, 2> poxel, unsigned int x, unsigned int y) restrict(amp) {
+	bool CheckAndSet(array_view<Poxel, 2> poxel, unsigned int y, unsigned int x) restrict(amp) {
 		if (!poxel[y][x].enabled) {
 			Poxel* p = &poxel[y][x];
 
@@ -35,9 +35,9 @@ public:
 
 		if (idx[0] > 0) { //Prevent falling out of scene
 
-			if (!CheckAndSet(poxel ,idx[0]-1,idx[1])) {}
-			else if (!CheckAndSet(poxel, idx[0] - 1, idx[1] - 1)) {}
-			else if (!CheckAndSet(poxel, idx[0] - 1, idx[1] + 1)) {}
+			if (CheckAndSet(poxel, idx[0] - 1, idx[1])) {}
+			else if (CheckAndSet(poxel, idx[0] - 1, idx[1] - 1)) {}
+			else if (CheckAndSet(poxel, idx[0] - 1, idx[1] + 1)) {}
 		}
 	}
 };
