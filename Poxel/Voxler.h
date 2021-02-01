@@ -12,6 +12,18 @@ void ensureDefaults() {
 		poxels[i].setDefault();
 }
 
+void doBrushDelete(unsigned int x, unsigned int y) {
+	for (unsigned int _x = x - brushSize, _y = y - brushSize; _y < y + brushSize;) {
+
+		if (_x >= 0 && _x < px && _y >= 0 && _y < py) {
+			poxels[_x + ((py - _y) * px)] = Poxel();
+		}
+
+		_x++;
+		if (_x == x + brushSize) { _x = x - brushSize; _y++; }
+	}
+}
+
 void doBrushPlace(unsigned int x, unsigned int y, Poxel pox) {
 	for (unsigned int _x = x - brushSize, _y = y - brushSize; _y < y + brushSize;) {
 
