@@ -13,17 +13,15 @@ using namespace Concurrency;
 	}
 
 	void processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
-		poxels[250 + (py*100)].enabled = true;
-
 		array_view<Poxel, 2> poxel(py, px, poxels);
 
 		parallel_for_each(
 			poxel.extent,
 			[=](index<2> idx) restrict(amp) {
 				if (poxel[idx].enabled) {
-					index<2> p = poxel[idx].doStep(poxel, rgbView, idx, bufferSwitch);
-					poxel[p].enabled = true;
+					poxel[idx].doStep(poxel, rgbView, idx, bufferSwitch);
 				}
+				else rgbView[bufferSwitch][idx] = Color();
 			}
 		);
 

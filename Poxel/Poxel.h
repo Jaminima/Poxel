@@ -17,12 +17,17 @@ public:
 		enabled = false;
 	}
 
-	index<2> doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict (amp) {
+	void doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict (amp) {
 		rgbView[bufferSwitch][idx] = poxel[idx].color;
 
-		/*if (!poxel[idx - px].enabled) {*/
-		return index<2>(idx - px);
-		//}
+		if (!poxel[idx[0]-1][idx[1]].enabled) {
+			Poxel *p = &poxel[idx[0] - 1][idx[1]];
+
+			p->enabled = true;
+			p->color = color;
+
+			enabled = false;
+		}
 	}
 };
 
