@@ -26,9 +26,7 @@ bool pick_accelerator()
 
 int main(int argc, char** argv)
 {
-#ifndef _DEBUG
-	pick_accelerator();
-#endif
+	if (useGPU) pick_accelerator();
 
 	ensureDefaults();
 	ensureClear();

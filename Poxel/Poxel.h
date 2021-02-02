@@ -23,7 +23,7 @@ public:
 		enabled = false;
 	}
 
-	bool CheckAndSet(array_view<Poxel, 2> poxel, unsigned int y, unsigned int x) restrict(amp) {
+	bool CheckAndSet(array_view<Poxel, 2> poxel, unsigned int y, unsigned int x) restrict(amp,cpu) {
 		if (!poxel[y][x].enabled) {
 			Poxel* p = &poxel[y][x];
 
@@ -36,7 +36,7 @@ public:
 		return false;
 	}
 
-	void doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict(amp) {
+	void doStep(array_view<Poxel, 2> poxel, array_view<Color, 3> rgbView, index<2> idx, bool bufferSwitch) restrict(amp, cpu) {
 		rgbView[bufferSwitch][idx] = poxel[idx].color;
 
 		if (idx[0] > 0) { //Prevent falling out of scene

@@ -42,6 +42,7 @@ completion_future processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
 	Color _bgColor = bgColor;
 	array_view<Poxel, 2> poxel(py, px, poxels);
 
+	if (useGPU)
 	parallel_for_each(
 		poxel.extent,
 		[=](index<2> idx) restrict(amp) {
@@ -51,6 +52,18 @@ completion_future processTick(array_view<Color, 3> rgbView, bool bufferSwitch) {
 			else rgbView[bufferSwitch][idx] = _bgColor;
 		}
 	);
+	
+	else
+		for (unsigned int y = 0, x = 0; y < py;) {
+			if (poxel[y][x].enabled) {
+				poxel[y][x].doStep(poxel, rgbView, index<2>(y, x), bufferSwitch);
+			}
+			//else rgbView[bufferSwitch][y][x] = _bgColor;
+
+			x++;
+			if (x == px) { x = 0; y++; }
+		}
+
 
 	return poxel.synchronize_async();
 }
