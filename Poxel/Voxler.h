@@ -5,7 +5,7 @@
 
 using namespace Concurrency;
 
-Poxel* poxels = static_cast<Poxel*>(malloc(2 * px * py * sizeof(Poxel)));
+Poxel* poxels = static_cast<Poxel*>(malloc(px * py * sizeof(Poxel)));
 
 void ensureDefaults() {
 	for (unsigned int i = 0; i < px * py; i++)
